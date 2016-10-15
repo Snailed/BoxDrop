@@ -21,7 +21,7 @@ public class Spil extends Canvas implements Runnable{
 
         handler = new Handler();
         this.addKeyListener(new TasteInput(handler));
-        new Vindue(WIDTH, HEIGHT, "Ball-drop", this);
+        new Vindue(WIDTH, HEIGHT, "BoxDrop", this);
         hud = new HUD();
         //Her tilføjes objekter...
         handler.tilføjObjekt(new Player(640,600, 50, 50, ID.Player));
