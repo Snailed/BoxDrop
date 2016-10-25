@@ -20,6 +20,9 @@ public class HUD {
         g.fillRect(30,30,currentHealth*3,30);
         g.setColor(Color.white);
         g.drawString("HP:",30,20);
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 40));
+        g.drawString("Point: "+Spil.point,900,40);
+        g.drawString("Sværhedsgrad: "+Spil.difficulty,900,80);
     }
 
     public void looseHealth(int lostHealth) {

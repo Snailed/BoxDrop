@@ -1,3 +1,5 @@
+import sun.security.provider.ConfigFile;
+
 import java.awt.*;
 
 /**
@@ -14,7 +16,7 @@ public class basalFjende extends SpilObject{
     public void tick() {
 
         y = y+velY;
-        if (i%4 == 0) {
+        if (i%(10-Math.floorDiv(Spil.difficulty,2)) == 0) {
             velY++;
         }
         y++;

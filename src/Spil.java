@@ -14,8 +14,10 @@ public class Spil extends Canvas implements Runnable{
     public boolean kørerSpillet;
     private Handler handler;
     private int r = 0;
-    private long point = 0;
+    public static long point = 0;
+    private static int pointcounter = 0;
     public HUD hud;
+    public static int difficulty = 0;
     public Spil() {
 
 
@@ -83,9 +85,9 @@ public class Spil extends Canvas implements Runnable{
 
             if(System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-                System.out.println("FPS: "+frames);
+                //System.out.println("FPS: "+frames);
                 frames = 0;
-                point=point + 100;
+
             }
         }
         stop();
@@ -93,7 +95,8 @@ public class Spil extends Canvas implements Runnable{
     private void tick() {
         handler.tick();
         hud.tick();
-        if (r % 20 == 0) {
+
+        if (r % (10-difficulty) == 0) {
             handler.tilføjObjekt(new basalFjende(r, -60, 60, 60, ID.Enemy));
         }
         r = (int)(Math.random()*1280);
@@ -107,7 +110,17 @@ public class Spil extends Canvas implements Runnable{
             render();
             stop();
         }
-
+        if (pointcounter++==5) {
+            pointcounter=0;
+            point++;
+        }
+        if (point%200==0) {
+            if (difficulty != 9) {
+                difficulty++;
+                System.out.println("Sværhedsgrad: " + difficulty);
+                point++;
+            }
+        }
 
 
     }
